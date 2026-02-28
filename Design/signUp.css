@@ -1,0 +1,104 @@
+/* SignUp css */
+
+body {
+background-image: linear-gradient(to right top, #00ff62, #00ff6c, #00ff75, #00ff7e, #00ff86, #00ffb5, #00ffdb, #00fff6, #73feff, #bcfaff, #ecf9ff, #ffffff);
+}
+
+.signUpContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.signUpForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: min(450px, 90%);
+    height: 80%;
+    gap: 20px;
+    background-color: #fff;
+    border-radius: 8%;
+    color: #000;
+    position: relative;
+}
+
+.signUpForm > h1 {
+    color: #000;
+    margin-bottom: 45px;
+}
+
+.inputDiv{
+    display: flex;
+    justify-content: center;
+    width: min(400px, 80%);
+}
+
+.inputLabel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 7px 10px 7px 10px;
+    background: #fff;
+    border-radius: 10px 0 0 10px;
+}
+
+input {
+    width: 100%;
+    height: 20px;
+    padding: 20px 10px 20px 10px;
+    border: none;
+    outline: none;
+    border-radius: 0px 10px 10px 0px;
+    border: 1.5px solid #00ff62;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: #00dd91;
+    box-shadow: 0 0 10px 00dd90c8;
+}
+
+.submitButton > button {
+    margin-top: 10px;
+    background-color: #00dd91;
+    padding: 10px 30px 10px 30px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.submitButton > button:hover {
+    box-shadow: 0 0 10px #00dd91;
+    background-color: #00dd91;
+    color: #fff;
+}
+
+.reDirectLogin {
+    font-size: 0.85rem;
+    color: #000;
+}
+
+.reDirectLogin > a {
+    color: blue;
+}
+
+.reDirectLogin > a:hover {
+    text-decoration: underline;
+}
+
+.errorMsg {
+    position: absolute;
+    top: 75px;
+    color: red;
+    font-size: 0.85rem;
+    text-align: center;
+    width: 80%;
+}
