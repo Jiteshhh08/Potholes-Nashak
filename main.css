@@ -7,7 +7,12 @@
     box-sizing: border-box;
     font-family: popins, Arial;
     list-style-type: none;
+    text-decoration: none;
 }
+
+
+/* Header */
+
 
 .headerContainer {
     height: 64px;
@@ -20,7 +25,7 @@
     padding: 0px 50px;
 }
 
-.logo {
+.logo > a{
     font-size: 1.35rem;
     color: white;
     cursor: pointer;
@@ -39,9 +44,14 @@
     height: 100%;
 }
 
-.headerElement {
+.headerElement{
     transition: all 0.3s ease-in;
     cursor: pointer;
+}
+
+.headerElement > a {
+    color: inherit;
+
 }
 
 .headerElement:hover {
@@ -91,8 +101,12 @@
     gap: 15px;
 }
 
-.sideBar>  ul > li {
+.sideBar > ul > li {
     cursor: pointer;
+}
+
+.sideBar >  ul > li > a {
+    color: inherit;
 }
 
 .buttonSideBar {
@@ -125,6 +139,8 @@
     display: none;
 }
 
+
+/* Responsiveness */
 
 
 @media (max-width: 900px) {
