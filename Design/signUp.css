@@ -1,7 +1,7 @@
 /* SignUp css */
 
 body {
-background-image: linear-gradient(to right top, #00ff62, #00ff6c, #00ff75, #00ff7e, #00ff86, #00ffb5, #00ffdb, #00fff6, #73feff, #bcfaff, #ecf9ff, #ffffff);
+background-image: linear-gradient(to right top, #4f46e5, #8473ef, #afa1f6, #d7d0fc, #ffffff);
 }
 
 .signUpContainer {
@@ -20,7 +20,7 @@ background-image: linear-gradient(to right top, #00ff62, #00ff6c, #00ff75, #00ff
     width: min(450px, 90%);
     height: 80%;
     gap: 20px;
-    background-color: #fff;
+    background-color: #f0ecff;
     border-radius: 8%;
     color: #000;
     position: relative;
@@ -54,18 +54,18 @@ input {
     border: none;
     outline: none;
     border-radius: 0px 10px 10px 0px;
-    border: 1.5px solid #00ff62;
+    border: 1.5px solid #4f46e5;
     transition: all 0.3s ease;
 }
 
 input:focus {
-    border-color: #00dd91;
-    box-shadow: 0 0 10px 00dd90c8;
+    border-color: #8473ef;
+    box-shadow: 0 0 10px #afa1f6;
 }
 
 .submitButton > button {
     margin-top: 10px;
-    background-color: #00dd91;
+    background-color: #8473ef;
     padding: 10px 30px 10px 30px;
     border-radius: 10px;
     border: none;
@@ -76,8 +76,8 @@ input:focus {
 }
 
 .submitButton > button:hover {
-    box-shadow: 0 0 10px #00dd91;
-    background-color: #00dd91;
+    box-shadow: 0 0 10px #8473ef;
+    background-color: #8473ef;
     color: #fff;
 }
 
