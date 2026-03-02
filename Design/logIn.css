@@ -1,7 +1,7 @@
 /* Login page */
 
 body {
-background-image: linear-gradient(to right top, #00ff62, #00ffe8, #00ffff, #cffcff, #ffffff);    border-radius: 8%;
+background-image: linear-gradient(to right bottom, #4f46e5, #8473ef, #afa1f6, #d7d0fc, #ffffff);
 }
 
 .logInContainer {
@@ -20,7 +20,7 @@ background-image: linear-gradient(to right top, #00ff62, #00ffe8, #00ffff, #cffc
     width: min(450px, 90%);
     height: 400px;
     gap: 20px;
-    background-color: #fff;
+    background-color: #f0ecff;
     border-radius: 8%;
     color: #000;
     position: relative;
@@ -53,18 +53,18 @@ input {
     border: none;
     outline: none;
     border-radius: 0px 10px 10px 0px;
-    border: 1.5px solid #00ff62;
+    border: 1.5px solid #4f46e5;
     transition: all 0.3s ease;
 }
 
 input:focus {
-    border-color: #00dd91;
-    box-shadow: 0 0 10px #00dd90c8;
+    border-color: #8473ef;
+    box-shadow: 0 0 10px #afa1f6;
 }
 
 .submitButton > button {
     margin-top: 10px;
-    background-color: #00ff62;
+    background-color: #4f46e5;
     padding: 10px 30px 10px 30px;
     border-radius: 10px;
     border: none;
@@ -75,8 +75,8 @@ input:focus {
 }
 
 .submitButton > button:hover {
-    box-shadow: 0 0 10px #00dd91;
-    background-color: #00dd91;
+    box-shadow: 0 0 10px #8473ef;
+    background-color: #8473ef;
     color: #fff;
 }
 
