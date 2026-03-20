@@ -1,6 +1,6 @@
 # Pothole-Nashak
 
-A smart web-based pothole reporting system that allows users to report road damages and helps authorities track and manage repairs efficiently.
+A web-based pothole reporting system that allows users to report road damages and helps authorities track and manage repairs efficiently.
 
 ---
 
