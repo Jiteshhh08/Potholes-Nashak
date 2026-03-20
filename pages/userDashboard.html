@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userDashboard</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<body>
+
+
+    <div class="headerContainer">
+        <div class="leftHeader">
+            <div class="logo">
+                <a href="../index.html">Pothole-Nashak</a>
+            </div>
+        </div>
+        <div class="rightHeader">
+            <ul>
+                <li class="headerElement"><a href="./about.html">About us</a></li>
+                <li class="profilePic" style="color:#e3e3e3">
+                <span id="userName"></span>
+
+                <a href="./profile.html">
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                height="30px"
+                viewBox="0 -960 960 960"
+                width="30px"
+                fill="#e3e3e3">
+
+                <path d="M480-480q-66 0-113-47t-47-113
+                q0-66 47-113t113-47
+                q66 0 113 47t47 113
+                q0 66-47 113t-113 47ZM160-160
+                v-112q0-34 17.5-62.5T224-378
+                q62-31 126-46.5T480-440
+                q66 0 130 15.5T736-378
+                q29 15 46.5 43.5T800-272
+                v112H160Z"/>
+
+                </svg>
+
+                </a>
+                <button id="logoutBtn" class="logoutBtn">Logout</button>
+                </li>
+            </ul>
+            <svg class="menu headerElement" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960"
+                width="30px" fill="#fff">
+                <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+            </svg>
+        </div>
+    </div>
+    
+    <!-- SideBar -->
+
+    <div class="sideBar deActive">
+        <ul>
+            <li><a href="./about.html">About</a></li>
+        </ul>
+        <svg class="closeSideBar" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px"
+            fill="#fff">
+            <path
+                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+        </svg>
+    </div>
+
+    <!-- Hero Section -->
+
+    <section class="heroSection">
+
+        <span class="heroText">
+            <h1>Welcome, <span id="welcomeName"></span>!</h1>
+            <span id="typed-text-span">
+                <h1 id="typed-text"></h1>
+            </span>
+        </span>
+
+        <div class="card-container">
+
+            <div class="card">
+                <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                        width="24px" fill="#000">
+                        <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z" />
+                    </svg></div>
+                <h3>Total Reports</h3>
+                <p id="totalReports">0</p>
+            </div>
+
+            <div class="card">
+                <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                        width="24px" fill="#000">
+                        <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
+                    </svg></div>
+                <h3>Fixed potholes</h3>
+                <p id="fixedReports">0</p>
+            </div>
+
+            <div class="card">
+                <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                        width="24px" fill="#000">
+                        <path
+                            d="M320-160h320v-120q0-66-47-113t-113-47q-66 0-113 47t-47 113v120ZM160-80v-80h80v-120q0-61 28.5-114.5T348-480q-51-32-79.5-85.5T240-680v-120h-80v-80h640v80h-80v120q0 61-28.5 114.5T612-480q51 32 79.5 85.5T720-280v120h80v80H160Z" />
+                    </svg></div>
+                <h3>Pending Reports</h3>
+                <p id="pendingReports">0</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- reportingPotholes -->
+
+    <section class="reportingSection">
+        <h1 class="reportingText">Start reporting potholes now!</h1>
+        <button class="reportingBtn" onclick="scrollToSection('report')">Report Pothole</button>
+    </section>
+    <section class="report-section" id="report">
+
+<h2>Report a Pothole</h2>
+
+<form class="form-container" id="reportForm">
+
+<div class="form-group">
+<label>📍 Select pothole location on map</label>
+<div id="map"></div>
+</div>
+
+<div class="form-group">
+<label>📍 Location</label>
+<input type="text" id="location" placeholder="Enter location" required>
+</div>
+
+<div class="form-group">
+<label>📸 Upload Photo</label>
+<input type="file" id="photo" accept="image/*" required>
+</div>
+
+<div class="form-group">
+<label>⚠️ Severity</label>
+<select id="severity">
+<option>Minor pothole</option>
+<option>Major pothole</option>
+<option>Critically big hazardous pothole</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Description</label>
+<textarea id="description" placeholder="Describe the pothole"></textarea>
+</div>
+
+
+<button type="submit" class="submit-btn">
+Submit Report
+</button>
+
+</form>
+
+</section>
+
+    <section class="userReports">
+
+    <h2 class="reportTitle">Your Reports</h2>
+
+    <div id="reportList" class="reportGrid"></div>
+
+    </section>
+    <!-- Footer section -->
+
+
+    <footer class="mainFooter">
+        <div class="footerContainer">
+
+            <div class="footerSection">
+                <h2 class="footerLogo">Pothole-Nashak</h2>
+                <p>
+                    Empowering citizens to report potholes and improve road safety.
+                    Building smarter and safer cities.
+                </p>
+            </div>
+
+            <div class="footerSection">
+                <h3>Quick Links</h3>
+                <ul class="footerLinks">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="">Report</a></li>
+                    <li><a href="./about.html">About</a></li>
+                </ul>
+            </div>
+
+            <div class="footerSection">
+                <h3>Contact</h3>
+                <p>Email: contact@gmail.com</p>
+                <p>Phone: +91 6767676767</p>
+            </div>
+
+        </div>
+
+        <div class="footerBottom">
+            <p>© 2026 Pothole-Nashak. All Rights Reserved.</p>
+        </div>
+    </footer>
+ 
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+
+const name = localStorage.getItem("loggedInUser");
+
+if(!name){
+window.location.href = "./logInUser.html";
+}
+
+document.getElementById("userName").textContent = name;
+document.getElementById("welcomeName").textContent = name;
+
+const form = document.querySelector(".form-container");
+const reportList = document.getElementById("reportList");
+
+let reports = JSON.parse(localStorage.getItem("reports")) || [];
+
+let map = L.map('map').setView([19.0760,72.8777], 12); // Mumbai
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+maxZoom:19
+}).addTo(map);
+
+let marker;
+let selectedLat = null;
+let selectedLng = null;
+
+map.on('click', function(e){
+
+selectedLat = e.latlng.lat;
+selectedLng = e.latlng.lng;
+
+if(marker){
+map.removeLayer(marker);
+}
+
+marker = L.marker([selectedLat,selectedLng]).addTo(map);
+
+});
+
+updateDashboard();
+displayReports();
+
+form.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const location = document.getElementById("location").value;
+const severity = document.getElementById("severity").value;
+const description = document.getElementById("description").value;
+if(selectedLat === null){
+alert("Please select pothole location on the map");
+return;
+}
+
+const photoFile = document.getElementById("photo").files[0];
+
+const reader = new FileReader();
+
+reader.onload = function(){
+
+const photoBase64 = reader.result;
+
+const report = {
+location,
+severity,
+description,
+photo: photoBase64,
+status: "pending",
+lat: selectedLat,
+lng: selectedLng,
+reportedBy: name,
+};
+
+reports.push(report);
+
+localStorage.setItem("reports", JSON.stringify(reports));
+
+form.reset();
+
+updateDashboard();
+
+displayReports();
+
+};
+
+reader.readAsDataURL(photoFile);
+
+});
+
+function updateDashboard(){
+
+const total = reports.length;
+const pending = reports.filter(r => r.status === "pending").length;
+const fixed = reports.filter(r => r.status === "fixed").length;
+
+document.getElementById("totalReports").textContent = total;
+document.getElementById("pendingReports").textContent = pending;
+document.getElementById("fixedReports").textContent = fixed;
+
+}
+
+function displayReports(){
+
+reportList.innerHTML = "";
+
+reports.forEach((report,index)=>{
+
+const div = document.createElement("div");
+
+div.classList.add("reportCard");
+
+div.innerHTML = `
+<img src="${report.photo}" class="reportImage">
+
+<h3>🚧 ${report.location}</h3>
+
+<p>${report.severity}</p>
+
+<p>${report.description}</p>
+
+<span class="statusBadge">${report.status}</span>
+
+<button onclick="deleteReport(${index})">Delete</button>
+`;
+
+reportList.appendChild(div);
+
+});
+
+}
+
+function deleteReport(index){
+
+reports.splice(index,1);
+
+localStorage.setItem("reports", JSON.stringify(reports));
+
+updateDashboard();
+
+displayReports();
+
+}
+
+document.getElementById("logoutBtn").onclick = function(){
+
+localStorage.removeItem("loggedInUser");
+
+window.location.href = "../index.html";
+
+};
+
+</script>
+        
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/heroSec.js"></script>
+</body>
+</html>

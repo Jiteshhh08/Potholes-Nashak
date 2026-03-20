@@ -55,3 +55,57 @@ function logInFormErrors(email, password) {
     return Errors;
 }
 })
+const signUpForm = document.querySelector(".signUpForm");
+
+if(signUpForm){
+
+signUpForm.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const name = document.querySelector(".nameInput").value;
+const email = document.querySelector(".emailInput").value;
+const password = document.querySelector(".passwordInput").value;
+
+const user = {
+    name:name,
+    email:email,
+    password:password
+};
+document.querySelector(".signUpForm").reset();
+localStorage.setItem("user", JSON.stringify(user));
+
+alert("Signup successful! Please login.");
+
+window.location.href = "../pages/logInUser.html";
+
+});
+}
+
+const loginForm = document.querySelector(".logInForm");
+
+if(loginForm){
+
+loginForm.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const email = document.querySelector(".emailInput").value;
+const password = document.querySelector(".passwordInput").value;
+
+const storedUser = JSON.parse(localStorage.getItem("user"));
+
+if(storedUser && email === storedUser.email && password === storedUser.password){
+
+localStorage.setItem("loggedInUser", storedUser.name);
+
+window.location.href = "./userDashboard.html";
+
+}else{
+
+alert("Invalid login");
+
+}
+
+});
+}

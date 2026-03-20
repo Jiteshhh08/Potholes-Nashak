@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
 </head>
-<link rel="stylesheet" href="main.css">
-<link rel="stylesheet" href="./Design/logIn.css">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/logIn.css">
 
 <body>
 
@@ -40,12 +40,39 @@
                 <div class="submitButton">
                     <button class="Submit" type="submit">Log in as Admin</button>
                 </div>
-                <p class="reDirectSignUp">Dont have an Account?, <a href="./SignUp.html"><i>Sign Up</i></a></p>
+                <p class="reDirectSignUp">Admin access only</p>
             </form>
         </div>
     </div>
 
 
 </body>
-<script src="./auth/auth.js"></script>
+<script>
+
+const adminEmail = "admin@pothole.com";
+const adminPassword = "admin123";
+
+document.querySelector(".logInForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const email = document.querySelector(".emailInput").value;
+const password = document.querySelector(".passwordInput").value;
+
+if(email === adminEmail && password === adminPassword){
+
+localStorage.setItem("adminLoggedIn", "true");
+
+window.location.href = "./adminDashboard.html";
+
+}else{
+
+alert("Invalid admin credentials");
+
+}
+
+});
+
+</script>
+</body>
 </html>

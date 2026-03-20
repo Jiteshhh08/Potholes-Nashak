@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
 </head>
-<link rel="stylesheet" href="main.css">
-<link rel="stylesheet" href="Design/dashboard.css">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/dashboard.css">
 <body>
     
     
     <div class="headerContainer">
         <div class="leftHeader">
             <div class="logo">
-                <a href="index.html">Pothole-Nashak</a>
+                <a href="../index.html">Pothole-Nashak</a>
             </div>
         </div>
         <div class="rightHeader">
             <ul>
                 <li class="headerElement"><a href="./about.html">About us</a></li>
                 <li class="profilePic" style="color: #e3e3e3">Name <a href="./profile.html"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e3e3e3"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/></svg></a></li>
+                <button id="adminLogout" class="logoutBtn">Logout</button>
             </ul>
             <svg class="menu headerElement" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960"
                 width="30px" fill="#fff">
@@ -32,7 +33,7 @@
 
     <div class="sideBar deActive">
         <ul>
-            <li><a href="about.html">About</a></li>
+            <li><a href="./about.html">About</a></li>
         </ul>
         <svg class="closeSideBar" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px"
             fill="#fff">
@@ -52,12 +53,15 @@
             </span>
         </span>
 
-        <div class="card-container">
+    </section>
 
-            <div class="card">
-            
-            </div>
-        </div>
+    <!-- Admin Reports Section -->
+
+    <section class="adminReports">
+
+        <h2 class="reportTitle">All Reported Potholes</h2>
+
+        <div id="adminReportList" class="reportGrid"></div>
 
     </section>
 
@@ -80,7 +84,7 @@
             <ul class="footerLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="">Report</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="./about.html">About</a></li>
             </ul>
         </div>
 
@@ -96,7 +100,89 @@
         <p>© 2026 Pothole-Nashak. All Rights Reserved.</p>
     </div>
 </footer>
+    <script>
 
+let reports = [];
+
+const container = document.getElementById("adminReportList");
+
+function loadReports(){
+
+reports = JSON.parse(localStorage.getItem("reports")) || [];
+
+container.innerHTML = "";
+
+reports.forEach((report,index)=>{
+
+const div = document.createElement("div");
+
+div.classList.add("reportCard");
+
+div.innerHTML = `
+<img src="${report.photo}" class="reportImage">
+
+<h3>🚧 ${report.location}</h3>
+
+<p><strong>Severity:</strong> ${report.severity}</p>
+
+<p><strong>Reported By:</strong> ${report.reportedBy}</p>
+
+<p>${report.description}</p>
+
+<p>
+<a href="https://www.openstreetmap.org/?mlat=${report.lat}&mlon=${report.lng}" target="_blank">
+📍 View Location
+</a>
+</p>
+
+<p>Status:
+<span class="statusBadge ${report.status}">
+${report.status}
+</span>
+</p>
+
+${report.status === "pending"
+? `<button onclick="markFixed(${index})">✔ Mark as Fixed</button>`
+: `<button disabled>Already Fixed</button>`}
+`;
+
+container.appendChild(div);
+
+});
+
+}
+
+function markFixed(index){
+
+reports[index].status = "fixed";
+
+localStorage.setItem("reports", JSON.stringify(reports));
+
+loadReports();
+
+}
+
+loadReports();
+
+</script>
+<script>
+
+if(localStorage.getItem("adminLoggedIn") !== "true"){
+window.location.href = "./logInAdmin.html";
+}
+
+</script>
+<script>
+
+document.getElementById("adminLogout").onclick = function(){
+
+localStorage.removeItem("adminLoggedIn");
+
+window.location.href = "../index.html";
+
+};
+
+</script>
 </body>
-<script src="heroSec.js"></script>
+<script src="../js/heroSec.js"></script>
 </html>

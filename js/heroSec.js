@@ -14,3 +14,10 @@ const observer = new IntersectionObserver(entries => {
 cards.forEach(card => {
     observer.observe(card);
 });
+function scrollToSection(id) {
+    const element = document.getElementById(id);
+
+    element.scrollIntoView({
+        behavior: "smooth"
+    });
+}
