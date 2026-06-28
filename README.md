@@ -71,4 +71,4 @@ Potholes-Nashak/
 
 ## If you like this project
 
-Give it a star ⭐ on GitHub!
+Give it a star on GitHub!
